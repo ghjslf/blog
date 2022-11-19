@@ -15,7 +15,7 @@ class MainPageTest(unittest.TestCase):
     def tearDown(self):
         """Закрытие окна браузера"""
 
-        self.browser.close()
+        self.browser.quit()
 
 
     def test_title_display(self):
