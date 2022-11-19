@@ -1,2 +1,5 @@
-def main_page():
-    pass
+from django.http import HttpResponse
+
+
+def main_page(requests):
+    return HttpResponse('<html><title>ghjslf</title></html>')
