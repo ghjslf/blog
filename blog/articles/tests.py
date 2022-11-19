@@ -1,11 +1,11 @@
 from django.test import TestCase
 from django.urls import resolve
 
-from articles.views import home_page
+from articles.views import main_page
 
 
-class HomePageTest(TestCase):
-    """Проверка домашней страницы"""
+class MainPageTest(TestCase):
+    """Проверка главной страницы"""
 
-    def test_correct_url_resolves_to_home_page_view(self):
-        self.assertEqual(resolve('/').func, home_page)
+    def test_correct_url_resolves_to_main_page_view(self):
+        self.assertEqual(resolve('/').func, main_page)
