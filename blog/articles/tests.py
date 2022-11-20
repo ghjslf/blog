@@ -16,8 +16,8 @@ class MainPageTest(TestCase):
         request = HttpRequest()
         response = main_page(request)
         html = response.content.decode('utf-8')
-        self.assertTrue(html.startswith('<html>'))
-        self.assertTrue(html.endswith('</html>'))
+        self.assertTrue(html.strip().startswith('<html>'))
+        self.assertTrue(html.strip().endswith('</html>'))
 
     def test_main_page_view_content_contains_correct_title(self):
         request = HttpRequest()
