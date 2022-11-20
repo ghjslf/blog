@@ -23,4 +23,4 @@ class MainPageTest(TestCase):
         request = HttpRequest()
         response = main_page(request)
         html = response.content.decode('utf-8')
-        self.assertIn('<title>ghjslf</title>', html)
+        self.assertIn('<title>Блог Никиты Пашкова</title>', html)
