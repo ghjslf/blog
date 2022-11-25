@@ -26,8 +26,14 @@ class MainPageTest(unittest.TestCase):
 
     def test_articles_list_display(self):
         """Проверка отображения списка статей"""   
-        articles_list = self.browser.find_element(By.CLASS_NAME, "articles_list")
+        articles_list = self.browser.find_element(By.CLASS_NAME, "articles-list")
         self.assertIsNotNone(articles_list, "No articles list")
+        article = self.browser.find_element(By.CLASS_NAME, "article")
+        self.assertIsNotNone(article, "No articles in list")
+        article_title = self.browser.find_element(By.CLASS_NAME, "article__title")
+        self.assertIsNotNone(article_title, "No title in article")
+        article_annotate = self.browser.find_element(By.CLASS_NAME, "article__annotate")
+        self.assertIsNotNone(article_annotate, "No annotate in article")
 
 
 if __name__ == "__main__":
