@@ -1,8 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Tag(models.Model):
-    title = models.CharField(verbose_name='Заголовок', max_length=255, unique=True, blank=True) 
+    title = models.CharField(verbose_name='Заголовок', max_length=255, unique=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
 
 class Article(models.Model):
     title = models.CharField(verbose_name='Заголовок', max_length=255, blank=True)
@@ -11,5 +16,7 @@ class Article(models.Model):
     content = models.TextField(verbose_name='Содержание', blank=True)
     created_at = models.DateTimeField(verbose_name='Создано', auto_now_add=True,)
     updated_at = models.DateTimeField(verbose_name='Обновлено', auto_now=True,)
-    author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True, verbose_name='Метки')
+
+    def __str__(self):
+        return self.title
