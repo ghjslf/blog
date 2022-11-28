@@ -34,6 +34,10 @@ class MainPageTest(unittest.TestCase):
         self.assertIsNotNone(article_title, "No title in article")
         article_annotate = self.browser.find_element(By.CLASS_NAME, "article__annotate")
         self.assertIsNotNone(article_annotate, "No annotate in article")
+        tags = self.browser.find_element(By.CLASS_NAME, "article__tags-list")
+        self.assertIsNotNone(tags, "No tags in article")
+        tag = self.browser.find_element(By.CLASS_NAME, "article__tag")
+        self.assertIsNotNone(tag, "Empty tags list")
 
 
 if __name__ == "__main__":

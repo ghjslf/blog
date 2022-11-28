@@ -1,24 +1,25 @@
 <html>
     <title>Блог Никиты Пашкова</title>
     <h1>Блог Никиты Пашкова</h1>
-    <li class="articles-list">
-        <ul class="article">
-            <h2 class="article__title">
-                Title 1
-            </h2>
-            <h3 class="article__annotate">
-                Annotation 1
-            </h3>
-            <p>test</p>
-        </ul>
-        <ul class="article">
-            <h2 class="article__title">
-                Title 2
-            </h2>
-            <h3 class="article__annotate">
-                Annotation 2
-            </h3>
-            <p>test</p>
-        </ul>
-    </li>
+    <ul class="articles-list">
+        {% for article in articles %}
+            <li class="article">
+                <h2 class="article__title">
+                    {{ article.title }}
+                </h2>
+                <h3 class="article__annotate">
+                    {{ article.annotation }}
+                </h3>
+                <ul class="article__tags-list">
+                    {% for tag in article.tags.all %}
+                    <li class="article__tag">
+                        {{ tag.title }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                
+                <hr />
+            </li>
+        {% endfor %}
+    </ul>
 </html>
