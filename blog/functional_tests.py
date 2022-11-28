@@ -39,6 +39,15 @@ class MainPageTest(unittest.TestCase):
         tag = self.browser.find_element(By.CLASS_NAME, "article__tag")
         self.assertIsNotNone(tag, "Empty tags list")
 
+    def test_article_link_leads_to_full_article(self):
+        """Проверка ссылок на полные статьи в заголовках статей"""
+        titles = self.browser.find_elements(By.CLASS_NAME, "article__title")
+        links = [title.find_element(By.TAG_NAME, "a") for title in titles]
+        
+        for title, link in zip(titles, links):
+            self.browser.get(link.get_attribute("href"))
+            self.assertEqual(self.browser.find_element(By.CLASS_NAME, "article__title"), title.text)
+
 
 if __name__ == "__main__":
     unittest.main()

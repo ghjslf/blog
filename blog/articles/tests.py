@@ -2,7 +2,7 @@ from django.urls import resolve
 from django.test import TestCase 
 from django.http import HttpRequest
 
-from articles.views import main_page
+from articles.views import main_page, article_page
 from articles.models import Article, Tag
 
 
@@ -93,7 +93,7 @@ class ArticlePageTest(TestCase):
         test_article.tags.add(test_tag)
 
         request = HttpRequest()
-        response = article_page(request)
+        response = article_page(request, 1)
         html = response.content.decode('utf-8')
 
         self.assertIn("Title 1", html)
