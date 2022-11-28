@@ -41,9 +41,9 @@ class MainPageTest(unittest.TestCase):
 
     def test_article_link_leads_to_full_article(self):
         """Проверка ссылок на полные статьи в заголовках статей"""
-        block = [(title.text, title.find_element(By.TAG_NAME, "a").get_attribute("href")) for title in self.browser.find_elements(By.CLASS_NAME, "article__title")]
+        blocks = [(title.text, title.find_element(By.TAG_NAME, "a").get_attribute("href")) for title in self.browser.find_elements(By.CLASS_NAME, "article__title")]
         
-        for title, link in block:
+        for title, link in blocks:
             self.browser.get(link)
             self.assertEqual(self.browser.find_element(By.CLASS_NAME, "article__title").text, title)
 
