@@ -5,7 +5,9 @@
         {% for article in articles %}
             <li class="article">
                 <h2 class="article__title">
-                    {{ article.title }}
+                    <a href="/{{ article.id }}/">
+                        {{ article.title }}
+                    </a>
                 </h2>
                 <h3 class="article__annotate">
                     {{ article.annotation }}
