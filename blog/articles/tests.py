@@ -63,15 +63,15 @@ class MainPageTest(TestCase):
         self.assertIn("test", html)
         self.assertNotIn("Content 2", html)
 
-        # self.assertIn(test_article.title, html)
-        # for tag in test_article.tags.all():
-        #     self.assertIn(tag.title, html)
-        # self.assertNotIn(test_article.content, html)
+        self.assertIn(test_article.title, html)
+        for tag in test_article.tags.all():
+            self.assertIn(tag.title, html)
+        self.assertNotIn(test_article.content, html)
         
-        # self.assertIn(another_test_article.title, html)
-        # for tag in another_test_article.tags.all():
-        #     self.assertIn(tag.title, html)
-        # self.assertNotIn(another_test_article.content, html)
+        self.assertIn(another_test_article.title, html)
+        for tag in another_test_article.tags.all():
+            self.assertIn(tag.title, html)
+        self.assertNotIn(another_test_article.content, html)
         
         
 class ArticlePageTest(TestCase):
