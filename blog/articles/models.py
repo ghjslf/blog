@@ -9,6 +9,11 @@ class Tag(models.Model):
         return self.title
 
 
+    class Meta:
+        verbose_name = 'Метка'
+        verbose_name_plural = 'Метки'
+
+
 class Article(models.Model):
     title = models.CharField(verbose_name='Заголовок', max_length=255, blank=True)
     preview = None
@@ -20,3 +25,8 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+
+    class Meta:
+        verbose_name = 'Статья'
+        verbose_name_plural = 'Статьи'
