@@ -6,12 +6,20 @@ from articles.models import Article, Tag
 
 
 def main_page(request: HttpRequest):
+    query = request.GET.get('q')
     tags = request.GET.getlist('tag')
 
     if not tags:
-        articles = Article.objects.all()
+        if not query:
+            articles = Article.objects.all()
+        else:
+            articles = Article.objects.filter(content__icontains=query)
     else:
-        articles = Article.objects.filter(tags__title__in=tags).distinct()
+        if not query:
+           articles = Article.objects.filter(tags__title__in=tags).distinct()
+        else:
+            articles = Article.objects.filter(tags__title__in=tags, content__icontains=query).distinct()
+        
     
     context = {
         "articles": articles,

@@ -9,23 +9,6 @@ from articles.models import Article, Tag
 class MainPageTest(TestCase):
     """Проверка главной страницы"""
 
-    def test_correct_url_resolves_to_main_page_view(self):
-        self.assertEqual(resolve('/').func, main_page)
-
-    def test_main_page_view_content_contains_correct_html(self):
-        """Проверяем, что view главной страницы возвращает текст обернутый в <html></html>"""
-        request = HttpRequest()
-        response = main_page(request)
-        html = response.content.decode('utf-8')
-        self.assertTrue(html.strip().startswith('<html>'))
-        self.assertTrue(html.strip().endswith('</html>'))
-
-    def test_main_page_view_content_contains_correct_title(self):
-        request = HttpRequest()
-        response = main_page(request)
-        html = response.content.decode('utf-8')
-        self.assertIn('<title>Блог Никиты Пашкова</title>', html)
-
     def test_articles_list_display(self):
         """Проверяем, что на главной странице отображаются статьи из базы данных"""
         test_tag = Tag(
@@ -62,16 +45,6 @@ class MainPageTest(TestCase):
         self.assertIn("/2", html)
         self.assertIn("test", html)
         self.assertNotIn("Content 2", html)
-
-        self.assertIn(test_article.title, html)
-        for tag in test_article.tags.all():
-            self.assertIn(tag.title, html)
-        self.assertNotIn(test_article.content, html)
-        
-        self.assertIn(another_test_article.title, html)
-        for tag in another_test_article.tags.all():
-            self.assertIn(tag.title, html)
-        self.assertNotIn(another_test_article.content, html)
         
         
 class ArticlePageTest(TestCase):
