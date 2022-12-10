@@ -17,13 +17,13 @@ class MainPageTest(unittest.TestCase):
     def test_title_display(self):
         """Проверка отображения заголовка сайта во вкладке браузера"""
         self.browser.get("http://localhost:8000")
-        self.assertEqual("Блог Никиты Пашкова", self.browser.title)
+        self.assertEqual("GHJSLF", self.browser.title)
 
     def test_header_display(self):
         """Проверка отображения заголовка сайта на странице"""
         self.browser.get("http://localhost:8000")
         header = self.browser.find_element(By.TAG_NAME, "h1").text
-        self.assertEqual("Блог Никиты Пашкова", header, "Wrong header")
+        self.assertEqual("GHJSLF", header, "Wrong header")
 
     def test_articles_list_display(self):
         """Проверка отображения списка статей"""
